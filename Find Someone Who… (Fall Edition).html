@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Find Someone Who… (Fall Edition) · Idioms & Slang Week 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0C2340; --gold:#AE9142; --ink:#1A1A1A; --muted:#555555; --panel:#F2F2F2; --pale:#EDF2F9;
+  --red:#9F241C; --rose:#F3E9E8; --green:#2F6B3A; --mint:#E6F0E7; --bg:#FFFFFF; --card:#FFFFFF; --line:#D6D9DE;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --ink:#ECEEF2; --muted:#AAB2BF; --panel:#16243A; --pale:#132238; --bg:#0A1424; --card:#101D31; --line:#2A3B55; --rose:#3A1E1C; --mint:#18301D; }
+}
+:root[data-theme="dark"]{ --ink:#ECEEF2; --muted:#AAB2BF; --panel:#16243A; --pale:#132238; --bg:#0A1424; --card:#101D31; --line:#2A3B55; --rose:#3A1E1C; --mint:#18301D; }
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Archivo,"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:16px;line-height:1.45}
+header{background:var(--navy);color:#fff;padding:16px 18px 14px;border-bottom:4px solid var(--gold)}
+header .org{font-size:11px;letter-spacing:.08em;color:var(--gold);font-weight:600;text-transform:uppercase}
+header h1{margin:4px 0 2px;font-size:22px;font-weight:800}
+header .sub{font-size:13px;opacity:.85}
+.sticky{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 18px}
+.progress-row{display:flex;align-items:center;gap:12px;max-width:760px;margin:0 auto}
+.track{flex:1;height:10px;background:var(--panel);border-radius:999px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--gold);transition:width .3s}
+.count{font-weight:800;font-size:14px;color:var(--navy);min-width:4.5em;text-align:right}
+:root[data-theme="dark"] .count{color:var(--gold)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .count{color:var(--gold)}}
+main{max-width:760px;margin:0 auto;padding:16px 18px 40px}
+.intro{background:var(--pale);border-left:5px solid var(--gold);padding:12px 14px;border-radius:4px;font-size:15px}
+.intro b{color:var(--navy)}
+:root[data-theme="dark"] .intro b{color:var(--gold)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .intro b{color:var(--gold)}}
+label.me{display:block;margin:16px 0 4px;font-weight:600;font-size:14px}
+input,textarea{font:inherit;width:100%;padding:10px 12px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+input:focus,textarea:focus{outline:none;border-color:var(--gold)}
+.card{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:14px;margin-top:14px;transition:border-color .2s,background .2s}
+.card.done{border-color:var(--green);background:var(--mint)}
+.top{display:flex;gap:12px;align-items:flex-start}
+.num{flex:none;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px}
+.card.done .num{background:var(--green)}
+.who{font-size:17px;font-weight:600;margin:4px 0 2px}
+.who span{color:var(--muted);font-weight:400;font-size:14px}
+.ask{font-size:14px;color:var(--muted);margin:0}
+.ask b{color:var(--ink);font-weight:600}
+.fields{display:grid;gap:8px;margin-top:12px}
+.fields .lbl{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;display:block}
+.fields .fu{font-style:italic;color:var(--gold);text-transform:none;letter-spacing:0;font-size:13px}
+.warn{font-size:13px;color:var(--red);margin-top:4px}
+.box{margin-top:22px;background:var(--panel);border-radius:14px;padding:14px}
+.box h2{margin:0 0 8px;font-size:16px;color:var(--navy)}
+:root[data-theme="dark"] .box h2{color:var(--gold)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .box h2{color:var(--gold)}}
+.clock{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.clock label{font-size:13px;font-weight:600}
+.phrases{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.phrases span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:13px}
+.done-banner{display:none;margin-top:18px;background:var(--navy);color:#fff;border-radius:14px;padding:16px;border-bottom:4px solid var(--gold)}
+.done-banner.show{display:block}
+.done-banner b{color:var(--gold)}
+.actions{display:flex;gap:10px;justify-content:space-between;margin-top:26px;flex-wrap:wrap}
+button{font:inherit;cursor:pointer;border-radius:10px;padding:9px 14px;border:2px solid var(--line);background:var(--card);color:var(--ink)}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.saved{font-size:12px;color:var(--muted);align-self:center}
+</style>
+</head>
+<body>
+<header>
+  <div class="org">Approach International Student Center · Idioms &amp; Slang · Week 1</div>
+  <h1>Find Someone Who… <span style="font-weight:400">(Fall Edition)</span></h1>
+  <div class="sub">Mingle game · Small Talk &amp; Ice-Breakers</div>
+</header>
+
+<div class="sticky">
+  <div class="progress-row">
+    <div class="track" aria-hidden="true"><div class="fill" id="fill"></div></div>
+    <div class="count" id="count" aria-live="polite">0 / 10</div>
+  </div>
+</div>
+
+<main>
+  <div class="intro">
+    <b>Stand up and walk around.</b> Ask the question. If the answer is <b>YES</b>, write the name, then ask the follow-up question and write the answer. Use a <b>different name</b> on every line.
+  </div>
+
+  <label class="me" for="myname">Your name</label>
+  <input id="myname" autocomplete="name" placeholder="Write your name">
+
+  <div id="list"></div>
+
+  <div class="done-banner" id="doneBanner">
+    <b>You found someone for every line!</b> Now help a classmate: ask them a question they still need.
+  </div>
+
+  <div class="box">
+    <h2>Clock Partners</h2>
+    <p class="ask" style="margin-bottom:10px">Find 4 different classmates. You will use these partners all quarter.</p>
+    <div class="clock">
+      <div><label for="c12">12:00</label><input id="c12" data-key="c12"></div>
+      <div><label for="c3">3:00</label><input id="c3" data-key="c3"></div>
+      <div><label for="c6">6:00</label><input id="c6" data-key="c6"></div>
+      <div><label for="c9">9:00</label><input id="c9" data-key="c9"></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2>Useful phrases</h2>
+    <div class="phrases">
+      <span>Hi! Can I ask you a question?</span><span>Really? Me too!</span><span>No way!</span>
+      <span>Can you spell your name?</span><span>Sorry, can you repeat that?</span><span>Thanks! Nice to meet you.</span>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2>After the mingle</h2>
+    <label class="me" for="q1" style="margin-top:4px">Who did you <i>hit it off</i> with? Why?</label>
+    <textarea id="q1" data-key="q1" rows="2"></textarea>
+    <label class="me" for="q2">What helped you <i>break the ice</i> with a new person?</label>
+    <textarea id="q2" data-key="q2" rows="2"></textarea>
+  </div>
+
+  <div class="actions">
+    <span class="saved" id="saved">Your answers are saved on this phone.</span>
+    <button id="resetBtn">Clear my answers</button>
+  </div>
+</main>
+
+<script>
+const ITEMS = [
+  ["drinks coffee every morning.","Do you drink coffee every morning?","What kind?"],
+  ["has lived in Massachusetts for less than one year.","How long have you lived in Massachusetts?","Where did you live before?"],
+  ["has talked to a stranger on the T or the bus.","Have you ever talked to a stranger on the T?","What about?"],
+  ["actually likes cold weather.","Do you like cold weather?","Why?"],
+  ["can say “hello” in three or more languages.","How many languages can you say “hello” in?","Which ones?"],
+  ["has visited Salem in October.","Have you ever been to Salem in October?","What did you see?"],
+  ["watched a soccer game last weekend.","Did you watch a soccer game last weekend?","Who played?"],
+  ["killed time on their phone today.","Did you kill time on your phone today?","Which app?"],
+  ["cooked food from their country this week.","Did you cook food from your country this week?","What did you make?"],
+  ["has a pet.","Do you have a pet?","What’s its name?"]
+];
+const KEY = "fsw-week1-fall2026";
+let data = {};
+try { data = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { data = {}; }
+
+const list = document.getElementById("list");
+ITEMS.forEach((it, i) => {
+  const c = document.createElement("div");
+  c.className = "card"; c.id = "card" + i;
+  c.innerHTML = `
+    <div class="top">
+      <div class="num">${i+1}</div>
+      <div>
+        <p class="who"><span>Find someone who…</span><br></p>
+        <p class="ask">Ask: <b></b></p>
+      </div>
+    </div>
+    <div class="fields">
+      <div><span class="lbl">Name</span><input data-key="n${i}" aria-label="Name for line ${i+1}" autocapitalize="words"></div>
+      <div class="warn" id="warn${i}" hidden>You already used this name. Find a different person!</div>
+      <div><span class="lbl">Follow-up: <span class="fu"></span> Answer</span><input data-key="a${i}" aria-label="Follow-up answer for line ${i+1}"></div>
+    </div>`;
+  c.querySelector(".who").appendChild(document.createTextNode(it[0]));
+  c.querySelector(".ask b").textContent = it[1];
+  c.querySelector(".fu").textContent = it[2];
+  list.appendChild(c);
+});
+
+const inputs = [...document.querySelectorAll("[data-key]"), document.getElementById("myname")];
+document.getElementById("myname").dataset.key = "me";
+inputs.forEach(el => {
+  el.value = data[el.dataset.key] || "";
+  el.addEventListener("input", () => {
+    data[el.dataset.key] = el.value;
+    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e) {}
+    update();
+  });
+});
+
+function update(){
+  let done = 0; const seen = {};
+  ITEMS.forEach((_, i) => {
+    const n = (data["n"+i] || "").trim().toLowerCase();
+    const dup = n && seen[n] !== undefined;
+    if (n && !dup) seen[n] = i;
+    document.getElementById("warn"+i).hidden = !dup;
+    const ok = n && !dup && (data["a"+i] || "").trim();
+    document.getElementById("card"+i).classList.toggle("done", !!ok);
+    if (ok) done++;
+  });
+  document.getElementById("fill").style.width = (done*10) + "%";
+  document.getElementById("count").textContent = done + " / 10";
+  document.getElementById("doneBanner").classList.toggle("show", done === 10);
+}
+update();
+
+document.getElementById("resetBtn").onclick = () => {
+  if (!confirm("Clear all your answers?")) return;
+  data = {}; try { localStorage.removeItem(KEY); } catch(e) {}
+  inputs.forEach(el => el.value = ""); update();
+};
+</script>
+</body>
+</html>
