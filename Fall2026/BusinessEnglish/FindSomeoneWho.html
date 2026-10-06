@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Find Someone Who: Professional Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E2340; --gold:#A07D3A; --gold-lt:#D8B979; --line:#D5DCE6; --ink:#1B2433; --muted:#5A6478;
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{background:#fff;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:#fff;color:var(--ink);font-family:"Source Sans 3","Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.5}
+.wrap{max-width:1000px;margin:0 auto;padding:24px 16px 90px}
+.runhead{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:14px;color:var(--muted);border-bottom:2px solid var(--gold);padding-bottom:6px;margin-bottom:18px}
+.runhead b{color:var(--navy)}
+.title{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:14px}
+h1{font-family:Lora,Georgia,serif;color:var(--navy);font-size:clamp(22px,4vw,30px);margin:0}
+.title span{color:var(--gold);font-weight:700}
+.top{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;margin:12px 0 16px}
+.top label{font-weight:700;color:var(--navy);font-size:14px;display:block}
+.top input{font:inherit;border:0;border-bottom:1px solid var(--muted);padding:4px 2px;min-width:220px;background:transparent}
+.score{margin-left:auto;color:var(--navy);font-weight:700}
+.score b{color:var(--gold);font-size:20px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line)}
+@media (max-width:820px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.grid{grid-template-columns:1fr}}
+.sq{border:1px solid var(--line);padding:12px 12px 10px;display:flex;flex-direction:column;min-height:190px;position:relative;transition:background .2s}
+.sq .prompt{font-size:17px;margin:0}
+.sq .ask{font-size:13px;color:var(--muted);font-style:italic;margin:4px 0 10px}
+.fields{margin-top:auto;display:flex;flex-direction:column;gap:6px}
+.fields input{font:inherit;font-size:15px;width:100%;border:0;border-bottom:1px dotted var(--muted);padding:4px 2px;background:transparent;color:var(--ink)}
+.fields input::placeholder{color:#8A93A3}
+.fields input:focus{outline:none;border-bottom:2px solid var(--gold)}
+.sq.done{background:#FBF7EE}
+.sq.done::after{content:"✓";position:absolute;top:8px;right:10px;color:var(--gold);font-weight:700;font-size:18px}
+.sq.win{box-shadow:inset 0 0 0 3px var(--gold)}
+.hired{display:none;margin:16px 0;border:2px solid var(--gold);padding:14px 18px;color:var(--navy);font-family:Lora,Georgia,serif;font-size:22px;text-align:center}
+.hired.show{display:block}
+.hired small{display:block;font-family:"Source Sans 3",Arial,sans-serif;font-size:15px;color:var(--muted)}
+.dup{color:#9A3B2E;font-size:13px;min-height:1em}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:2px solid var(--gold);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;justify-content:center}
+button{font:inherit;font-weight:700;background:#fff;color:var(--navy);border:2px solid var(--navy);padding:8px 16px;cursor:pointer}
+button.gold{border-color:var(--gold);color:var(--gold)}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.foot{font-family:Lora,Georgia,serif;font-style:italic;color:var(--muted);font-size:13px;border-top:1px solid var(--line);margin-top:22px;padding-top:6px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media print{
+  .bar{display:none}
+  .wrap{padding:0}
+  .grid{grid-template-columns:repeat(4,1fr)}
+  .sq{min-height:170px;break-inside:avoid}
+  .sq.done{background:#fff}
+  .hired{display:none!important}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="runhead"><span><b>Approach · Business English · Independent Level</b></span><span>Handout H1</span></div>
+  <div class="title"><h1>Find Someone Who: Professional Edition</h1><span>Mingle</span></div>
+  <p>Ask the full question (the suggested question is under each square). If the answer is yes, ask one more question and write the name and detail. One name per person. Complete a full row or column and say <b>“Hired!”</b></p>
+
+  <div class="top">
+    <div><label for="me">My name</label><input id="me" autocomplete="name"></div>
+    <div class="score">Squares completed: <b id="count">0</b> / 12</div>
+  </div>
+
+  <div class="hired" id="hired" role="status">Hired! 🎉<small>You completed a line. Keep going and try to fill the whole card.</small></div>
+
+  <div class="grid" id="grid"></div>
+  <p class="dup" id="dup" aria-live="polite"></p>
+
+  <div class="foot"><span>Copyright © 2011 Approach International Student Center, Inc.</span><span>Week 1 · Handout H1</span></div>
+</div>
+
+<div class="bar">
+  <button type="button" onclick="window.print()">Print</button>
+  <button type="button" class="gold" id="reset">Clear card</button>
+</div>
+
+<script>
+const items = [
+  ["…has worked in more than one country","Have you ever worked in more than one country?","Detail: which countries?"],
+  ["…has managed a team","Have you ever managed a team?","Detail: how many people?"],
+  ["…speaks three or more languages","Do you speak three or more languages?","Detail: which ones?"],
+  ["…has had a job interview in English","Have you ever had a job interview in English?","Detail: for what job?"],
+  ["…has worked in healthcare","Have you ever worked in healthcare?","Detail: what job?"],
+  ["…has worked in a restaurant or hotel","Have you ever worked in a restaurant or hotel?","Detail: what job?"],
+  ["…has owned a business","Have you ever owned a business?","Detail: what kind?"],
+  ["…has changed careers","Have you ever changed careers?","Detail: from what to what?"],
+  ["…has trained a new employee","Have you ever trained a new employee?","Detail: how many / where?"],
+  ["…has a LinkedIn profile","Do you have a LinkedIn profile?","Detail: how long?"],
+  ["…has earned a certificate or license","Have you ever earned a certificate or license?","Detail: which one?"],
+  ["…has used Excel or a computer system at work","Have you ever used Excel or a computer system at work?","Detail: which one?"]
+];
+const KEY = "fsw-h1-v1";
+const grid = document.getElementById("grid");
+items.forEach(([p, q, d], i) => {
+  const sq = document.createElement("div");
+  sq.className = "sq"; sq.dataset.i = i;
+  sq.innerHTML = `<p class="prompt">${p}</p><p class="ask">“${q}”</p>
+    <div class="fields">
+      <input type="text" data-k="n${i}" placeholder="Name" aria-label="Name for: ${p.replace('…','')}">
+      <input type="text" data-k="d${i}" placeholder="${d}" aria-label="${d}">
+    </div>`;
+  grid.appendChild(sq);
+});
+
+function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ return {}; } }
+function save(s){ try { localStorage.setItem(KEY, JSON.stringify(s)); } catch(e){} }
+let state = load();
+document.querySelectorAll("input[data-k], #me").forEach(inp => {
+  const k = inp.dataset.k || "me";
+  if (state[k]) inp.value = state[k];
+  inp.addEventListener("input", () => { state[k] = inp.value; save(state); update(); });
+});
+
+const lines = [];
+for (let r = 0; r < 3; r++) lines.push([0,1,2,3].map(c => r*4 + c));
+for (let c = 0; c < 4; c++) lines.push([0,1,2].map(r => r*4 + c));
+
+let wasHired = false;
+function update(){
+  const done = items.map((_, i) => (state["n"+i] || "").trim() !== "");
+  document.querySelectorAll(".sq").forEach((sq, i) => { sq.classList.toggle("done", done[i]); sq.classList.remove("win"); });
+  document.getElementById("count").textContent = done.filter(Boolean).length;
+  const won = lines.filter(l => l.every(i => done[i]));
+  won.flat().forEach(i => document.querySelector(`.sq[data-i="${i}"]`).classList.add("win"));
+  const h = document.getElementById("hired");
+  h.classList.toggle("show", won.length > 0);
+  if (won.length && !wasHired) h.scrollIntoView({behavior:"smooth", block:"center"});
+  wasHired = won.length > 0;
+  // one name per person
+  const names = items.map((_, i) => (state["n"+i] || "").trim().toLowerCase()).filter(Boolean);
+  const dups = [...new Set(names.filter((n, i) => names.indexOf(n) !== i))];
+  document.getElementById("dup").textContent = dups.length ? `Remember: one name per person. You used “${dups[0]}” more than once.` : "";
+}
+document.getElementById("reset").addEventListener("click", () => {
+  if (!confirm("Clear all names and details on this card?")) return;
+  state = {}; save(state);
+  document.querySelectorAll("input").forEach(i => i.value = "");
+  wasHired = false; update();
+});
+update();
+</script>
+</body>
+</html>
