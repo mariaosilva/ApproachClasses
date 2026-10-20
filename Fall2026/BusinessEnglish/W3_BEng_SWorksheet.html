@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Week 3 · Student Worksheet · Writing a Targeted Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E2340; --gold:#A07D3A; --gold-lt:#D8B979;
+  --paper:#FFFFFF; --line:#D5DCE6; --ink:#1B2433; --muted:#5A6478;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:#fff}
+body{margin:0;background:#fff;color:var(--ink);font-family:"Source Sans 3","Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.55}
+.wrap{max-width:900px;margin:0 auto;padding:24px 16px 60px}
+.sheet{background:#fff;padding:32px clamp(18px,4vw,44px);margin-bottom:40px;border-bottom:1px solid var(--line)}
+.runhead{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;border-bottom:2px solid var(--gold);padding-bottom:6px;margin-bottom:22px;color:var(--muted)}
+.runhead b{color:var(--navy)}
+.banner{background:var(--navy);color:#fff;text-align:center;padding:30px 16px 22px}
+.banner .org{color:var(--gold-lt);font-weight:700;letter-spacing:.02em}
+.goldbar{height:14px;background:var(--gold)}
+.levelband{text-align:center;padding:12px;margin-top:18px;color:var(--navy);border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);font-weight:600}
+.levelband strong{font-size:20px;display:block;font-family:Lora,Georgia,serif}
+h1,h2,h3{font-family:Lora,Georgia,serif;color:var(--navy);line-height:1.25}
+h1{font-size:clamp(28px,5vw,40px);margin:26px 0 4px;text-align:center}
+.sub{text-align:center;color:var(--muted);font-size:19px;margin:0}
+h2{font-size:26px;margin:0 0 12px;padding-left:14px;border-left:6px solid var(--gold)}
+h3{font-size:19px;margin:26px 0 8px}
+p{margin:0 0 12px}
+.lead{max-width:70ch}
+.tablewrap{overflow-x:auto;margin:10px 0 18px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th{background:#fff;color:var(--navy);text-align:left;padding:8px 10px;font-weight:700;border-bottom:2px solid var(--gold);border-top:1px solid var(--line)}
+td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;background:#fff}
+.t{white-space:nowrap;font-weight:700;color:var(--gold)}
+.tag{display:inline-block;font-size:12.5px;font-weight:700;padding:0 8px;border-radius:10px;margin:1px 2px 1px 0;border:1px solid var(--line);color:var(--muted);background:#fff}
+.ind,.pr{color:var(--navy);border-color:var(--navy)}
+.gr,.whole{color:var(--gold);border-color:var(--gold)}
+.step{border:1px solid var(--line);border-left:4px solid var(--gold);padding:14px 16px;margin:14px 0;background:#fff}
+.step h4{margin:0 0 6px;font-size:17px;color:var(--navy)}
+.step .meta{font-size:14px;color:var(--muted);margin-bottom:6px}
+.step ol,.step ul{margin:6px 0 4px 20px;padding:0}
+.note,.note.green,.note.navy{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);padding:12px 16px;margin:14px 0;font-size:15px}
+.note.green,.note.navy{border-left-color:var(--navy)}
+.phase{display:flex;align-items:baseline;gap:10px;margin:30px 0 4px;flex-wrap:wrap}
+.phase span{font-family:Lora,Georgia,serif;font-size:22px;font-weight:700;color:var(--gold)}
+.phase small{color:var(--muted)}
+.handout-title{color:var(--navy);border-bottom:2px solid var(--gold);padding:4px 0 8px;font-weight:700;font-size:19px;font-family:Lora,Georgia,serif;margin:0 0 14px}
+.handout-title em{color:var(--gold);font-style:normal;font-weight:600;font-size:15px;font-family:"Source Sans 3",Arial,sans-serif;float:right}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0;border:1px solid var(--line)}
+.grid4 div{border:1px solid var(--line);padding:12px 10px;min-height:110px;font-size:15px}
+.grid4 div small{display:block;margin-top:26px;border-top:1px dotted var(--muted);color:var(--muted);font-size:12px;padding-top:2px}
+.card{border:2px dashed var(--line);padding:14px 16px;margin:10px 0}
+.card b.lbl{color:var(--navy)}
+.line{border-bottom:1px solid var(--muted);height:30px}
+.frames{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.frames > div{border:1px solid var(--line);padding:12px 14px;border-top:3px solid var(--gold)}
+.frames h5{margin:0 0 6px;font-size:15px;color:var(--navy)}
+.key td:first-child{width:40px;text-align:center;font-weight:700;color:var(--navy)}
+ul.tight{margin:6px 0 12px 20px;padding:0}
+a{color:var(--navy);font-weight:600;text-decoration-color:var(--gold)}
+.reflect{background:#fff;color:var(--navy);padding:16px 20px;margin:16px 0;font-family:Lora,Georgia,serif;font-size:20px;border:2px solid var(--gold)}
+.reflect small{display:block;font-family:"Source Sans 3",Arial,sans-serif;font-size:14px;color:var(--gold);font-weight:700;margin-bottom:6px}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-family:Lora,Georgia,serif;font-style:italic;color:var(--muted);font-size:14px;border-top:1px solid var(--line);margin-top:26px;padding-top:8px}
+.printbtn{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));background:#fff;color:var(--navy);border:2px solid var(--gold);padding:10px 16px;font-weight:700;font-family:inherit;cursor:pointer}
+.printbtn:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.old{text-decoration:line-through;color:var(--muted)}
+.new{font-weight:600}
+@media print{
+  .wrap{max-width:none;padding:0}
+  .sheet{margin:0;padding:0 0 10px;border:0;page-break-after:always}
+  .printbtn{display:none}
+  .step,.card,table{break-inside:avoid}
+  .banner,.goldbar{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+
+.who{display:flex;gap:20px;flex-wrap:wrap;margin:18px 0}
+.who label{font-weight:700;color:var(--navy);flex:1;min-width:200px}
+.hint{font-size:14px;color:var(--muted)}
+.center{text-align:center}
+input[type=text],select,textarea{font:inherit;font-size:15px;color:var(--ink);background:#fff}
+input[type=text]{border:0;border-bottom:1px dotted var(--muted);padding:3px 2px;width:100%}
+.who input,.qs input{display:block;width:100%;margin-top:2px}
+.qs input.short2{display:inline-block}
+p input.wide{display:inline-block;width:auto;min-width:min(100%,360px)}
+input.short2{width:110px!important}
+select{border:1px solid var(--line);padding:4px 6px;border-radius:3px;min-width:90px}
+textarea{width:100%;border:1px solid var(--line);padding:6px 8px;resize:vertical;margin:4px 0 10px;overflow:hidden}
+td textarea{margin:0;min-width:200px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);border-bottom:2px solid var(--gold)}
+input[type=checkbox]{width:18px;height:18px;accent-color:#A07D3A}
+.qs{margin:6px 0 14px 20px;padding:0}.qs li{margin-bottom:10px}
+.formula{border:2px solid var(--gold);padding:12px 16px;text-align:center;color:var(--navy);font-family:Lora,Georgia,serif;font-size:20px;font-weight:700;margin:6px 0 10px}
+.formula.small{font-size:16px;font-weight:600;text-align:left}
+.reveal{display:flex;align-items:center;gap:12px;margin:8px 0}
+.showbtn{font:inherit;font-weight:700;background:#fff;color:var(--navy);border:2px solid var(--gold);padding:8px 14px;cursor:pointer}
+.count{font-family:Lora,Georgia,serif;font-size:24px;color:var(--gold);font-weight:700}
+.resume{display:none;border:2px solid var(--navy);padding:14px 16px;margin:8px 0}
+.resume.on{display:block}
+ul.checks{list-style:none;padding:0;margin:6px 0 12px}
+ul.checks li{margin-bottom:6px}
+ul.checks label{display:flex;gap:8px;align-items:center}
+#panel td{text-align:center}#panel td:first-child{font-weight:700;color:var(--navy)}
+.tot{font-weight:700;color:var(--gold)}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:2px solid var(--gold);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;justify-content:center;z-index:5}
+.bar button{font:inherit;font-weight:700;background:#fff;color:var(--navy);border:2px solid var(--navy);padding:8px 16px;cursor:pointer}
+.bar button.gold{border-color:var(--gold);color:var(--gold)}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{padding-bottom:100px}
+@media print{.bar,.reveal{display:none}.resume{display:block}select{border:1px solid #999;-webkit-appearance:none;appearance:none}textarea{border:1px solid #bbb}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="sheet">
+  <div class="runhead"><span><b>Approach · Business English · Independent Level</b></span><span>Student Worksheet · Week 3</span></div>
+  <div class="banner"><div class="org">Approach International Student Center</div></div>
+  <div class="goldbar"></div>
+  <h1>Writing a Targeted Resume</h1>
+  <p class="sub">Week 3 · Student Worksheet</p>
+  <div class="levelband"><strong>Independent Level</strong>A2+ · B1 · B1+</div>
+  <div class="who">
+    <label>Student name <input type="text"></label>
+    <label>Date <input type="text"></label>
+  </div>
+  <p class="lead"><b>Today you will:</b> learn what a US resume includes and leaves out · write strong bullets (verb + keyword + number) · find real numbers from your experience · write a summary and three bullets for your target job.</p>
+  <p class="hint">You need: your job posting from Week 2 and your current resume. You can type on this page (answers save in this browser) or print it.</p>
+</section>
+
+<section class="sheet">
+  <div class="runhead"><span><b>Approach · Business English · Independent Level</b></span><span>Block 1</span></div>
+  <div class="handout-title">1 · Keyword Echo <em>Pairs</em></div>
+  <p>Read 3 keywords from your posting. Your partner uses all 3 in one sentence about you.</p>
+  <p>My keywords: <input type="text" class="wide"></p>
+  <p>My partner's sentence: <input type="text" class="wide"></p>
+
+  <div class="handout-title">2 · The Six-Second Test <em>Pairs</em></div>
+  <p>Wait for your teacher. Look at each resume for 6 seconds only, then write what you remember.</p>
+  <div class="reveal">
+    <button type="button" class="showbtn" data-target="resA">Show Resume A (6 seconds)</button>
+    <span class="count" id="cnt-resA"></span>
+  </div>
+  <div class="resume" id="resA">
+    <p><b>CURRICULUM VITAE</b><br>Lucas Ferreira · Brazilian · 34 years old · Married</p>
+    <p>Objective: To work in a solid company where I can grow professionally and contribute with my knowledge.</p>
+    <p>Experience: Hotel Mar Azul, Salvador. I worked at the reception and was responsible for many tasks like check-in and check-out, helping guests, organizing the schedule of the employees and also solving problems. Before that I worked in a resort in Porto Seguro doing events and also reception.</p>
+    <p style="margin:0">Hobbies: football, cooking, travel.</p>
+  </div>
+  <p>What I remember from A:</p><textarea rows="2"></textarea>
+  <div class="reveal">
+    <button type="button" class="showbtn" data-target="resB">Show Resume B (6 seconds)</button>
+    <span class="count" id="cnt-resB"></span>
+  </div>
+  <div class="resume" id="resB">
+    <p><b>LUCAS FERREIRA</b> · Worcester, MA · (508) 555-0147 · lucas.ferreira@email.com</p>
+    <p><b>Front office professional</b> with 9 years in hotel operations and guest services. Bilingual: Portuguese / English.</p>
+    <p><b>Front Desk Supervisor</b> · Hotel Mar Azul, Salvador, Brazil · 2019–2024</p>
+    <ul class="tight" style="margin-bottom:0">
+      <li>Supervised 8 front desk agents in a 200-room hotel</li>
+      <li>Managed scheduling for 3 shifts, cutting overtime costs by 15%</li>
+      <li>Resolved 20+ guest complaints weekly; raised review scores from 4.1 to 4.6</li>
+    </ul>
+  </div>
+  <p>What I remember from B:</p><textarea rows="2"></textarea>
+  <p>Which one did you remember more? Why? <input type="text" class="wide"></p>
+</section>
+
+<section class="sheet">
+  <div class="runhead"><span><b>Approach · Business English · Independent Level</b></span><span>Block 1</span></div>
+  <div class="handout-title">3 · Keep or Cut? <em>Groups of 5</em></div>
+  <p>Many CVs in Brazil and Latin America include these items. Which belong on a US resume?</p>
+  <div class="tablewrap"><table>
+    <tr><th>#</th><th>Item</th><th>Keep / Cut / It depends</th></tr>
+    <tr><td>1</td><td>Photo of yourself</td><td><select class="kc"></select></td></tr>
+    <tr><td>2</td><td>Date of birth or age</td><td><select class="kc"></select></td></tr>
+    <tr><td>3</td><td>Marital status</td><td><select class="kc"></select></td></tr>
+    <tr><td>4</td><td>CPF, DNI or other ID number</td><td><select class="kc"></select></td></tr>
+    <tr><td>5</td><td>Nationality</td><td><select class="kc"></select></td></tr>
+    <tr><td>6</td><td>“Objective: to grow in a solid company”</td><td><select class="kc"></select></td></tr>
+    <tr><td>7</td><td>Full home address with apartment number</td><td><select class="kc"></select></td></tr>
+    <tr><td>8</td><td>City, state, phone, email</td><td><select class="kc"></select></td></tr>
+    <tr><td>9</td><td>LinkedIn URL</td><td><select class="kc"></select></td></tr>
+    <tr><td>10</td><td>Three or four pages</td><td><select class="kc"></select></td></tr>
+    <tr><td>11</td><td>Certifications and licenses</td><td><select class="kc"></select></td></tr>
+    <tr><td>12</td><td>Languages and level</td><td><select class="kc"></select></td></tr>
+    <tr><td>13</td><td>Hobbies</td><td><select class="kc"></select></td></tr>
+    <tr><td>14</td><td>Salary expectation</td><td><select class="kc"></select></td></tr>
+  </table></div>
+  <p>Why do you think US employers don't want a photo or your age? <input type="text" class="wide"></p>
+</section>
+
+<section class="sheet">
+  <div class="runhead"><span><b>Approach · Business English · Independent Level</b></span><span>Block 1</span></div>
+  <div class="handout-title">4 · Strong verbs + -ed sounds <em>Whole class</em></div>
+  <div class="formula">Strong verb + task + number or result</div>
+  <p class="center">Weak: <i>Managed patient care.</i> → Strong: <i>Coordinated care transitions for 80+ patients daily, reducing discharge time by 18%.</i></p>
+  <h3>Resume grammar rules</h3>
+  <ol class="tight">
+    <li>No “I.” Start each bullet with the verb.</li>
+    <li>Past simple for past jobs (managed, trained).</li>
+    <li>Present simple for your current job (manage, train).</li>
+    <li>Short lines. One idea per bullet.</li>
+  </ol>
+  <h3>Verb Ladder</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Instead of…</th><th>Lead people</th><th>Improve things</th><th>Organize work</th><th>Communicate</th><th>Serve people</th></tr>
+    <tr><td>did · helped · worked · was responsible for · had to</td><td>supervised · trained · mentored · led · managed</td><td>reduced · increased · improved · streamlined · saved</td><td>coordinated · scheduled · planned · processed · maintained</td><td>presented · negotiated · translated · documented · reported</td><td>resolved · assisted · delivered · advised · welcomed</td></tr>
+  </table></div>
+  <p>My five verbs: <input type="text" class="wide"></p>
+  <h3>Say it right: how does -ed sound?</h3>
+  <p class="hint">Only verbs ending in a /t/ or /d/ sound get an extra syllable: coordinat-ed.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Verb</th><th>Sound</th><th>Verb</th><th>Sound</th><th>Verb</th><th>Sound</th></tr>
+    <tr><td>managed</td><td><select class="ed"></select></td><td>worked</td><td><select class="ed"></select></td><td>coordinated</td><td><select class="ed"></select></td></tr>
+    <tr><td>trained</td><td><select class="ed"></select></td><td>processed</td><td><select class="ed"></select></td><td>created</td><td><select class="ed"></select></td></tr>
+    <tr><td>resolved</td><td><select class="ed"></select></td><td>reduced</td><td><select class="ed"></select></td><td>documented</td><td><select class="ed"></select></td></tr>
+  </table></div>
+</section>
+
+<section class="sheet">
+  <div class="runhead"><span><b>Approach · Business English · Independent Level</b></span><span>Block 1</span></div>
+  <div class="handout-title">5 · Bullet Bootcamp <em>Teams</em></div>
+  <p>Upgrade each bullet: strong verb + task + keyword + number or result. Invent realistic details.</p>
+  <div class="tablewrap"><table>
+    <tr><th>#</th><th>Weak bullet</th><th>Use this keyword</th><th>Strong bullet</th></tr>
+    <tr><td>1</td><td>Helped with patient records.</td><td>clinical documentation</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>2</td><td>Worked with doctors and nurses.</td><td>cross-functional communication</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>3</td><td>Managed the team.</td><td>team leadership</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>4</td><td>Did check-in and check-out.</td><td>guest services</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>5</td><td>Was responsible for the warehouse.</td><td>inventory control</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>6</td><td>Helped my boss with construction projects.</td><td>project coordination</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>7</td><td>Answered the phone at the office.</td><td>customer service</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>8</td><td>Cooked in a restaurant.</td><td>food safety</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>9</td><td>Taught new workers.</td><td>onboarding</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>10</td><td>Improved the way patients were discharged.</td><td>patient flow</td><td><textarea rows="2"></textarea></td></tr>
+  </table></div>
+</section>
+
+<section class="sheet">
+  <div class="runhead"><span><b>Approach · Business English · Independent Level</b></span><span>Block 1</span></div>
+  <div class="handout-title">6 · Number Finder <em>Pairs</em></div>
+  <p>Interview your partner and write their numbers. Then swap.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Ask your partner</th><th>Partner's number</th></tr>
+    <tr><td>How many people did you supervise, train or work with?</td><td><input type="text"></td></tr>
+    <tr><td>How many customers, patients, orders or calls per day or week?</td><td><input type="text"></td></tr>
+    <tr><td>How much money did you handle, save or bring in?</td><td><input type="text"></td></tr>
+    <tr><td>Did you make anything faster? From how long to how long?</td><td><input type="text"></td></tr>
+    <tr><td>How big was the place? (rooms, beds, locations)</td><td><input type="text"></td></tr>
+    <tr><td>How long did you do it? Any awards, ratings or scores?</td><td><input type="text"></td></tr>
+    <tr><td>Did you reduce errors, complaints or accidents? By how much?</td><td><input type="text"></td></tr>
+  </table></div>
+  <p class="hint"><b>Estimate, don't invent:</b> approximately · up to · more than · 20+ · an average of</p>
+  <p><b>My best number as a bullet:</b></p>
+  <textarea rows="2"></textarea>
+</section>
+
+<section class="sheet">
+  <div class="runhead"><span><b>Approach · Business English · Independent Level</b></span><span>Block 2</span></div>
+  <div class="handout-title">7 · Resume Myths <em>Four corners</em></div>
+  <p>Walk to the corner you choose. After you hear the answer, mark it here.</p>
+  <div class="tablewrap"><table>
+    <tr><th>#</th><th>Statement</th><th>Answer</th></tr>
+    <tr><td>1</td><td>Your resume must be one page.</td><td><select class="tf"></select></td></tr>
+    <tr><td>2</td><td>You should include a photo.</td><td><select class="tf"></select></td></tr>
+    <tr><td>3</td><td>Experience from outside the US doesn't count.</td><td><select class="tf"></select></td></tr>
+    <tr><td>4</td><td>You need a different resume for every job.</td><td><select class="tf"></select></td></tr>
+    <tr><td>5</td><td>You should write “References available upon request.”</td><td><select class="tf"></select></td></tr>
+    <tr><td>6</td><td>Volunteer work can go on your resume.</td><td><select class="tf"></select></td></tr>
+  </table></div>
+
+  <div class="handout-title">8 · The summary formula <em>Whole class</em></div>
+  <div class="formula small">[Adjective] + [field] professional with [X] years of experience in [keyword], [keyword] and [keyword]. [Top achievement with number]. [Credential or language]. Seeking a [exact job title] role at [employer].</div>
+  <h3>Number + noun before a noun</h3>
+  <div class="tablewrap"><table>
+    <tr><th>✗ Not this</th><th>✓ This</th></tr>
+    <tr><td>a 9 years experience</td><td>9 years of experience</td></tr>
+    <tr><td>a 200 rooms hotel</td><td>a 200-room hotel</td></tr>
+    <tr><td>experience in Brazil and US</td><td>experience in Brazil and the US</td></tr>
+  </table></div>
+  <p><b>Rule:</b> before a noun, number + noun is singular with a hyphen.</p>
+  <ol class="qs">
+    <li>a team of 15 people → a <input type="text" class="short2"> team</li>
+    <li>a project of 3 months → a <input type="text" class="short2"> project</li>
+    <li>a hotel with 200 rooms → a <input type="text" class="short2"> hotel</li>
+    <li>a career of 10 years → a <input type="text" class="short2"> career</li>
+  </ol>
+</section>
+
+<section class="sheet">
+  <div class="runhead"><span><b>Approach · Business English · Independent Level</b></span><span>Block 2</span></div>
+  <div class="handout-title">9 · Write your resume <em>Individual → pairs</em></div>
+  <p>Choose your level. Use your posting's keywords and your numbers from Activity 6.</p>
+  <div class="frames">
+    <div><h5>Starter</h5><p>___ professional with ___ years of experience in ___ and ___. Speak ___ and English. Seeking a ___ job at ___.</p></div>
+    <div><h5>Standard</h5><p>___ professional with ___ years of experience in [keyword], [keyword] and [keyword]. [Achievement with number]. Bilingual: ___ / English. Seeking a [job title] role at [employer].</p></div>
+    <div><h5>Challenge</h5><p>Results-driven ___ with a ___-year track record in [keyword] across ___. [Achievement + result]. [Credential]. Seeking to bring [strength] to [employer]'s [team or goal].</p></div>
+  </div>
+  <p style="margin-top:14px"><b>My target job and employer:</b> <input type="text" class="wide"></p>
+  <p><b>Professional summary</b> (3–4 lines):</p>
+  <textarea rows="4"></textarea>
+  <p><b>Job title · Employer · City, Country · Years:</b> <input type="text" class="wide"></p>
+  <p>• Bullet 1:</p><textarea rows="2"></textarea>
+  <p>• Bullet 2:</p><textarea rows="2"></textarea>
+  <p>• Bullet 3 (my strongest, with a number):</p><textarea rows="2"></textarea>
+  <h3>Partner check</h3>
+  <p class="hint">Your partner checks your work.</p>
+  <ul class="checks">
+    <li><label><input type="checkbox"> The summary names the target job title.</label></li>
+    <li><label><input type="checkbox"> I found at least 3 keywords from the posting.</label></li>
+    <li><label><input type="checkbox"> Every bullet starts with a strong verb.</label></li>
+    <li><label><input type="checkbox"> At least 2 bullets have a number.</label></li>
+    <li><label><input type="checkbox"> No “I” in the bullets.</label></li>
+  </ul>
+  <p>Partner's comment: “Your strongest bullet is ___. Add a number to ___.”</p>
+  <input type="text">
+</section>
+
+<section class="sheet">
+  <div class="runhead"><span><b>Approach · Business English · Independent Level</b></span><span>Block 2</span></div>
+  <div class="handout-title">10 · Hiring Panel <em>Groups of 5</em></div>
+  <p>You are the hiring panel. Read each slip and tick each point it earns. You can only call back two people.</p>
+  <div class="tablewrap"><table id="panel">
+    <tr><th>Slip</th><th>Strong verb</th><th>Keyword</th><th>Number</th><th>Result</th><th>Clear in 6 seconds</th><th>Total</th></tr>
+    <tr><td>A</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td class="tot">0 / 5</td></tr>
+    <tr><td>B</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td class="tot">0 / 5</td></tr>
+    <tr><td>C</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td class="tot">0 / 5</td></tr>
+    <tr><td>D</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td class="tot">0 / 5</td></tr>
+    <tr><td>E</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td class="tot">0 / 5</td></tr>
+  </table></div>
+  <p><b>Our top 2:</b> <input type="text" class="short2"> and <input type="text" class="short2"> because <input type="text" class="wide"></p>
+  <p><b>What the winning bullets had in common:</b></p>
+  <textarea rows="2"></textarea>
+  <p><b>My weakest bullet, fixed:</b></p>
+  <textarea rows="2"></textarea>
+</section>
+
+<section class="sheet">
+  <div class="runhead"><span><b>Approach · Business English · Independent Level</b></span><span>Wrap-up</span></div>
+  <div class="handout-title">Exit ticket <em>Individual</em></div>
+  <ol class="qs">
+    <li>Correct it: “I have a 10 years experience and I managed a 15 people team.” <input type="text"></li>
+    <li>Name two things to cut from a US resume. <input type="text"></li>
+  </ol>
+  <div class="reflect"><small>Reflection question</small>Which number on your resume are you proudest of, and what is the story behind it?</div>
+  <textarea rows="4"></textarea>
+  <div class="handout-title" style="margin-top:22px">Homework <em>Before Week 4</em></div>
+  <ul class="tight">
+    <li>Workbook U3: Exercise B and the My Portfolio page.</li>
+    <li>Type a one-page resume draft in Word or Google Docs. Bring it to Week 4.</li>
+    <li>Read your target employer's About page and one recent news item. Write one fact here for your cover letter: <input type="text"></li>
+  </ul>
+  <div class="foot"><span>Copyright © 2011 Approach International Student Center, Inc.</span><span>Week 3 · Student Worksheet</span></div>
+</section>
+</div>
+
+<div class="bar"><button type="button" onclick="window.print()">Print</button><button type="button" class="gold" id="clear">Clear my answers</button></div>
+<script>
+const opts={kc:["","Keep","Cut","It depends"],ed:["","/t/","/d/","/ɪd/"],tf:["","True","False","It depends"]};
+document.querySelectorAll("select").forEach(s=>{const o=opts[s.className];if(o)o.forEach(v=>{const e=document.createElement("option");e.value=v;e.textContent=v||"—";s.appendChild(e)});});
+const KEY="ws-week3-v1";let st={};try{st=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+const fields=[...document.querySelectorAll("input,select,textarea")];
+function grow(t){t.style.height="auto";t.style.height=(t.scrollHeight+2)+"px"}
+function totals(){document.querySelectorAll("#panel tr").forEach(r=>{const b=r.querySelectorAll("input[type=checkbox]");if(!b.length)return;r.querySelector(".tot").textContent=[...b].filter(x=>x.checked).length+" / 5";});}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+fields.forEach((f,i)=>{const k="f"+i,cb=f.type==="checkbox";
+  if(st[k]!=null){if(cb)f.checked=st[k];else f.value=st[k];}
+  f.addEventListener(cb||f.tagName==="SELECT"?"change":"input",()=>{st[k]=cb?f.checked:f.value;persist();if(f.tagName==="TEXTAREA")grow(f);totals();});
+  if(f.tagName==="TEXTAREA")grow(f);});
+totals();
+document.querySelectorAll(".showbtn").forEach(b=>b.addEventListener("click",()=>{
+  const t=document.getElementById(b.dataset.target),c=document.getElementById("cnt-"+b.dataset.target);
+  let n=6;t.classList.add("on");b.disabled=true;c.textContent=n;
+  const iv=setInterval(()=>{n--;c.textContent=n>0?n:"Time!";if(n<=0){clearInterval(iv);t.classList.remove("on");b.disabled=false;b.textContent=b.textContent.replace("Show","Show again:");}},1000);
+}));
+document.getElementById("clear").addEventListener("click",()=>{if(!confirm("Clear all your answers on this worksheet?"))return;st={};try{localStorage.removeItem(KEY)}catch(e){};fields.forEach(f=>{if(f.type==="checkbox")f.checked=false;else f.value="";if(f.tagName==="TEXTAREA")grow(f)});totals();});
+window.addEventListener("beforeprint",()=>document.querySelectorAll("textarea").forEach(grow));
+</script>
+</body>
+</html>
